@@ -5,15 +5,15 @@
  * beyond `z`.
  */
 const isUnique = (input: string): boolean => {
-  // hashmap implementation
-  /* Using a Set we can have one record for each available char,
-     if one is already present we return false.
+  /* Solution without extra data structure, using sorting
+     and looking for a repeated char.
    */
-  const CHARS: Set<string> = new Set();
+  const sortedString: Array<string> = input.split('').sort();
 
-  for (const char of input) {
-    if (CHARS.has(char)) return false;
-    CHARS.add(char);
+  let prev: string = '';
+  for (const char of sortedString) {
+    if (prev === char) return false;
+    prev = char;
   }
   return true;
 };
