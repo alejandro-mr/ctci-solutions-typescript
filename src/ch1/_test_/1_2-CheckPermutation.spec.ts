@@ -3,7 +3,7 @@ import checkPermutation from '../1_2-CheckPermutation';
 
 describe('checkPermutation', () => {
   test('Returns `true` when input strings are permutations', async () => {
-    expect(checkPermutation('abc', 'bca')).toBeTruthy();
+    expect(checkPermutation('abc', 'bac')).toBeTruthy();
   });
 
   test('Returns `false` when input strings are not permutations', async () => {

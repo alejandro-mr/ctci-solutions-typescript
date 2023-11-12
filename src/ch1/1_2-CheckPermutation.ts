@@ -1,24 +1,18 @@
 const checkPermutation = (a: string, b: string): boolean => {
-  /* Using hashmap to track all char and amount from input `a`
-   * and comparing against char in `b`
+  /* Using sort and comparing chars between both strings.
+   * No extra space needed, but complexity increased.
    */
 
-  const charsA: Map<string, number> = new Map();
-  for (const char of a) {
-    charsA.set(char, (charsA.get(char) || 0) + 1);
-  }
+  // Both string must have the same amount of chars to be a permutation.
+  if (a.length !== b.length) return false;
 
-  for (const char of b) {
-    if (!charsA.has(char)) return false;
+  // O(a log a) + O(b log b) sorting each string
+  const aSorted: Array<string> = a.split('').sort();
+  const bSorted: Array<string> = b.split('').sort();
 
-    charsA.set(char, (charsA.get(char) || 0) - 1);
-  }
-
-  /* Check that all characters are down to 0, meaning we have the
-   * same amount of characters in both string.
-   */
-  for (const count of charsA.values()) {
-    if (count !== 0) return false;
+  // O(a)
+  for (let i = 0; i <= aSorted.length; i++) {
+    if (aSorted[i] !== bSorted[i]) return false;
   }
 
   return true;
