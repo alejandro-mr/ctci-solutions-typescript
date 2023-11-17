@@ -3,10 +3,10 @@ import isUnique from '../1_1-IsUnique';
 
 describe('isUnique', () => {
   test('Returns `false` when there are duplicate characters', async () => {
-    expect(isUnique('abcade')).toBeFalsy();
+    expect(isUnique('abcade')).toBeFalse();
   });
 
   test('Return `true` when there are no duplicate characters', async () => {
-    expect(isUnique('abcde^&')).toBeTruthy();
+    expect(isUnique('abcde^&')).toBeTrue();
   });
 });
